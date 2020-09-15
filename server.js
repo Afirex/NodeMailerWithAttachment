@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/mail',urlmailer);
 
-const Email = 'insurgentforge@gmail.com ';
-const Name = 'Aftab';
+const autotrigger = require('./model/mailer_model/AutoTriggeredMailer');
+
+const Email = ' ';
+const Name = '';
 
 autotrigger(Email,Name);
 

@@ -34,33 +34,15 @@ let transporter = nodemailer.createTransport({
    }
 });
 
-function autoTrigger(Email, Name){
-        console.log('AutoTrigger called');
-        let mailOptions={
-            from: process.env.EMAIL,
-            to: Email,
-            subject: 'NOTIFICATION ',
-            text: 'Hi '+Name+',\n\n'+'We have Successfully Received your file\n\n\n Warm Regards\n Starwisp'
-        }
-        transporter.sendMail(mailOptions,function(err,data){
-            if(err){
-                errormsg+=" "+err; 
-                res.json({"Error_msg_NA: ": errormsg}); // _NM denotes mail without attachment
-             }
-            else 
-            { res.json({msg: "Success, Mail Will be Sent if email is correct"});  }
-        });
-}
 
-rout.post('/mail', function (req, res) {
+rout.post('/post', function (req, res) {
     upload(req,res,function(err)
    {  var errormsg="";
        if(err)
        {    errormsg+='Client error';  console.log(err);
             res.json({module: errormsg}); 
         }
-
-        console.log(req);
+      
        let To = req.body.to;
        let Subject= req.body.subject;
        let Text= req.body.text;
@@ -111,11 +93,9 @@ rout.post('/mail', function (req, res) {
  
    });
  
-});
-rout.get('/mail',function(req,res){
+}).get('/get',function(req,res){
   //  res.sendFile(__dirname+'\\public\\index.html');
-  res.json({'msg': 'You just called GET request. So,Hi from server'});
+  res.json({'msg': 'You just called GET request, Hi'});
 });
 
 module.exports = rout;
-module.exports = autoTrigger;

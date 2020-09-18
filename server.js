@@ -12,10 +12,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/mail',urlmailer);
 
-const autotrigger = require('./model/mailer_model/AutoTriggeredMailer');
 
-const Email = ' ';
-const Name = '';
+// const Email = '';
+// const Name = '';
 
 autotrigger(Email,Name);
 

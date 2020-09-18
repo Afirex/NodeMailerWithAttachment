@@ -34,7 +34,6 @@ let transporter = nodemailer.createTransport({
    }
 });
 
-
 rout.post('/post', function (req, res) {
     upload(req,res,function(err)
    {  var errormsg="";
